@@ -1,4 +1,4 @@
-import * as styles from "./Footer.css";
+import * as styles from './Footer.css';
 
 const Footer = () => {
   // Dynamic Date Function
@@ -7,10 +7,8 @@ const Footer = () => {
   };
 
   return (
-    <div className={styles.footer}>
-      &copy; {getCurrentYear()} Timbertop United
-    </div>
-  )
-}
+    <div className={styles.footer}>&copy; {getCurrentYear()} Blue Mountain</div>
+  );
+};
 
-export default Footer
+export default Footer;

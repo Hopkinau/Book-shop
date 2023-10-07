@@ -59,10 +59,9 @@ function ProductsPage() {
 
   return (
     <Container className='text-center mt-4'>
-      <h1>Timbertop United Kits &amp; Apparel</h1>
+      <h2>Blue Mountain</h2>
       <p>
-        Get the official 2023/24 Timbertop United Kits, inspired by the iconic
-        TU anniversary crest - celebrating its 20th anniversary
+        <em>Book Shop</em>
       </p>
 
       {/* Products Menu */}

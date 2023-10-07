@@ -6,15 +6,15 @@ const Home = () => {
   return (
     <Fragment>
       <Container>
-        <TuBox 
-          title="Official Store for Timbertop United"
-          content="Join Timbertop United's devoted fans with exclusive jerseys, scarves, and memorabilia"
-          link="Shop Now"
-          linkTo="/store/products"
+        <TuBox
+          title='Official  Blue Mountain Book-Shop'
+          content="Join us and get the best books you've ever read."
+          link='Shop Now'
+          linkTo='/store/products'
         />
       </Container>
     </Fragment>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
