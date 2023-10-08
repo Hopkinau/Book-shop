@@ -7,7 +7,7 @@ const Home = () => {
     <Fragment>
       <Container>
         <TuBox
-          title='Official  Blue Mountain Book-Shop'
+          title='Official  Blue Mountain Book Shop'
           content="Join us and get the best books you've ever read."
           link='Shop Now'
           linkTo='/store/products'
