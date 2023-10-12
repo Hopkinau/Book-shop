@@ -58,6 +58,10 @@ module.exports = {
     }
   },
   // [3] GET Product BY ID
+  async getProductById(req, res, next) {
+    try {
+    } catch (error) {}
+  },
 
   // [4] PUT Product BY ID
 
