@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import Container from 'react-bootstrap/Container';
 import TuBox from '../components/common/TuBox';
-
+import CardDemo from '../components/features/cart/Card';
 const Home = () => {
   return (
     <Fragment>
@@ -13,6 +13,7 @@ const Home = () => {
           linkTo='/store/products'
         />
       </Container>
+      <CardDemo />
     </Fragment>
   );
 };
