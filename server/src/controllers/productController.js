@@ -59,8 +59,34 @@ module.exports = {
   },
   // [3] GET Product BY ID
   async getProductById(req, res, next) {
+    // Test: Check ID passed via URL query string parameters
+    debugREAD(req.params);
+
     try {
-    } catch (error) {}
+      // Store the document query in variable & call GET method for ID
+      const productRef = db.collection('products').doc(req.params.id);
+      const doc = await productRef.get();
+
+      // [400 ERROR] Check for User Asking for Non-Existent Documents
+      if (!doc.exists) {
+        return next(
+          ApiError.badRequest('The item you were looking for does not exist')
+        );
+
+        // SUCCESS: Send back the specific document's data
+      } else {
+        res.send(doc.data());
+      }
+
+      // [500 ERROR] Checks for Errors in our Query - issue with route or DB query
+    } catch (err) {
+      return next(
+        ApiError.internal(
+          'Your request could not be processed at this time',
+          err
+        )
+      );
+    }
   },
 
   // [4] PUT Product BY ID

@@ -17,7 +17,7 @@ module.exports = () => {
   // POST Product
   router.post('/', fileServerUpload, ProductController.postProduct);
   // GET BY ID Product
-
+  router.get('/:id', ProductController.getProductById);
   // UPDATE BY ID Product
 
   // DELETE BY ID Product
