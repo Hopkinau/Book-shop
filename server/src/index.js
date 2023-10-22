@@ -4,10 +4,10 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const helmet = require("helmet");
-
+const helmet = require('helmet');
+const fileUpload = require('express-fileupload');
 // Local modules
-const config = require('./config/config'); 
+const config = require('./config/config');
 const ApiError = require('./utilities/ApiError');
 const apiErrorHandler = require('./middleware/apiErrorHandler');
 const routes = require('./routes/routes');
@@ -29,6 +29,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 debugStartup('POST parsing middleware enabled for JSON/URL');
 
+//File parsing middleware
+app.use(fileUpload({ createParentPath: true }));
 // Cycle our requests through morgan to track our queries
 app.use(morgan('dev'));
 
@@ -45,8 +47,7 @@ app.use(apiErrorHandler);
 
 // Ping DB & Set Port
 dbPing.then(() => {
-  app.listen(
-    config.port, 
-    () => console.log(`Server is running on port: ${config.port}`)
+  app.listen(config.port, () =>
+    console.log(`Server is running on port: ${config.port}`)
   );
 });

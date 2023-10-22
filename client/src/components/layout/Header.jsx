@@ -1,5 +1,5 @@
 import * as styles from './Header.css';
-import logoImg from '../../assets/images/timbertop-icon.png';
+
 import useAuth from '../../hooks/useAuth';
 import TuButton from '../common/TuButton';
 import TuLink from '../common/TuLink';
