@@ -51,7 +51,9 @@ module.exports = {
   // [2] POST Product
   async postProduct(req, res, next) {
     try {
-      debugWRITE('POST request received');
+      debugWRITE(req.files);
+      debugWRITE(req.locals);
+      debugWRITE(req.body);
       res.send('POST request received');
     } catch (error) {
       return next(ApiError.internal('You request is not processed', err));

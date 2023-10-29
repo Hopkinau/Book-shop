@@ -11,7 +11,25 @@ const fileServerUpload = (req, res, next) => {
 
     //2.APPEND UNIQUE FILE ID
     const filename = `${Date.now()}-${file.name}`;
-    next();
+    debugWRITE(`Unique Filename:${filename} created`);
+
+    //3.Declare server storage directory path
+    const uploadPath = path.join(__dirname, '../../public/uploads/', filename);
+
+    //4.Move file to server storage directory
+    file
+      .mv(uploadPath)
+      .then(() => {
+        console.log(`File:${filename} moved to server storage`);
+        res.locals.filename = filename;
+        next();
+      })
+      .catch((err) => {
+        if (err)
+          return next(
+            ApiError.internal('Your file could not be uploaded', err)
+          );
+      });
   } else {
     next();
   }
