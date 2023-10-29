@@ -9,6 +9,8 @@ const fileServerUpload = (req, res, next) => {
     const file = req.files.image;
     debugWRITE(`Image:${file.name} received`);
 
+    //2.APPEND UNIQUE FILE ID
+    const filename = `${Date.now()}-${file.name}`;
     next();
   } else {
     next();
