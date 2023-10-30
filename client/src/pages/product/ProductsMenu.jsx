@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Container from 'react-bootstrap/Container';
-
+import useAuth from '../../hooks/useAuth';
+import TuLink from '../../components/common/TuLink';
 import productService from '../../services/productService';
 import ProductsList from '../../components/features/products/ProductsList';
 import TuLoader from '../../components/common/TuLoader';
@@ -8,6 +9,7 @@ import axios from 'axios';
 
 function ProductsPage() {
   // PRODUCTS STATE
+  const { user } = useAuth();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -63,7 +65,12 @@ function ProductsPage() {
       <p>
         <em>Book Shop</em>
       </p>
-
+      {/* Admin Section:Add page */}
+      {user && (
+        <div className='py-4'>
+          <TuLink to='/store/product/add'>Add Product</TuLink>
+        </div>
+      )}
       {/* Products Menu */}
       {<ProductsList products={data} />}
     </Container>
