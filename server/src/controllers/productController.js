@@ -1,6 +1,7 @@
 // Import modules
 const { db } = require('../config/db');
 const ApiError = require('../utilities/ApiError');
+const { storageBucketUpload } = require('../utilities/bucketServices');
 const debugREAD = require('debug')('app:read');
 const debugWRITE = require('debug')('app:write');
 
@@ -50,11 +51,26 @@ module.exports = {
 
   // [2] POST Product
   async postProduct(req, res, next) {
+    debugWRITE(req.files);
+    debugWRITE(res.locals);
+    debugWRITE(req.body);
+    //SAVE TO BUCKET(file/image)
+    let downloadURL = null;
+
     try {
-      debugWRITE(req.files);
-      debugWRITE(req.locals);
-      debugWRITE(req.body);
-      res.send('POST request received');
+      const filename = res.locals.filename;
+      downloadURL = await storageBucketUpload(filename);
+    } catch (error) {
+      return next(
+        ApiError.internal(
+          'An error occurred in uploading image to storage',
+          err
+        )
+      );
+    }
+    //SAVE TO FIRESTORE(ALL DATA)
+    try {
+      res.send('test 1 2 3');
     } catch (error) {
       return next(ApiError.internal('You request is not processed', err));
     }
