@@ -11,7 +11,7 @@ class ApiError {
     this.err = err;
   }
 
-  // CLASS METHODS: Custom functions for each type of error 
+  // CLASS METHODS: Custom functions for each type of error
 
   // [400] Bad Request
   // PARAMETERS: We just pass in our custom message & status code is set as part of the function
@@ -30,6 +30,11 @@ class ApiError {
   static internal(msg, err) {
     debugError500(err);
     return new ApiError(500, `Internal Server Error: ${msg}`);
+  }
+
+  //[413] Entity Too Large
+  static tooLarge(msg) {
+    return new ApiError(413, `Entity Too Large: ${msg}`);
   }
 }
 

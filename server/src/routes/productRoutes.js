@@ -4,6 +4,8 @@ const express = require('express');
 const router = express.Router();
 
 // Import modules
+const ProductPolicy = require('../policies/productPolicy');
+const FilePolicy = require('../policies/filePolicy');
 const fileServerUpload = require('../middleware/fileServerUpload');
 const ProductController = require('../controllers/productController');
 
@@ -15,7 +17,17 @@ module.exports = () => {
   // GET onSALE Products
 
   // POST Product
-  router.post('/', fileServerUpload, ProductController.postProduct);
+  router.post(
+    '/',
+    [
+      ProductPolicy.validateProduct,
+      FilePolicy.filePayloadExists,
+      FilePolicy.fileSizeLimiter,
+      FilePolicy.fileExtLimiter(['.png', '.jpg', '.jpeg', '.gif']),
+      fileServerUpload,
+    ],
+    ProductController.postProduct
+  );
   // GET BY ID Product
   router.get('/:id', ProductController.getProductById);
   // UPDATE BY ID Product
