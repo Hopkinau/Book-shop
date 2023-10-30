@@ -1,9 +1,9 @@
-import * as styles from './ProductItem.css'
+import * as styles from './ProductItem.css';
 import { Link } from 'react-router-dom';
 
 function ProductItem(props) {
   return (
-    <Link className={styles.productLink} to="#">
+    <Link className={styles.productLink} to={`/store/product/${props.id}`}>
       <div className={styles.productCard}>
         <img src={props.image} alt={props.productName} />
         <div className={styles.productCardContent}>
@@ -12,7 +12,7 @@ function ProductItem(props) {
         </div>
       </div>
     </Link>
-  )
+  );
 }
 
-export default ProductItem
+export default ProductItem;

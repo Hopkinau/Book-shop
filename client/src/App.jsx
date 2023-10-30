@@ -7,6 +7,7 @@ import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
 import Dashboard from './pages/auth/Dashboard';
 import ProductsMenu from './pages/product/ProductsMenu';
+import ProductDetail from './pages/product/ProductDetail';
 import AddProduct from './pages/product/AddProduct';
 import NotFound from './pages/NotFound';
 
@@ -32,6 +33,8 @@ function App() {
         <Route path='store'>
           <Route path='products' element={<ProductsMenu />} />
           <Route path='product'>
+            {/* path: /store/product/:id */}
+            <Route path=':id' element={<ProductDetail />} />
             {/* Only login User can use add product route */}
             <Route element={<PrivateRoutes />}>
               {/* Add Route */}
