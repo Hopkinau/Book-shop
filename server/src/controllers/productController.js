@@ -70,7 +70,20 @@ module.exports = {
     }
     //SAVE TO FIRESTORE(ALL DATA)
     try {
-      res.send('test 1 2 3');
+      const productRef = db.collection('products');
+      const response = await productRef.add({
+        name: req.body.name,
+        description: req.body.description,
+        category: req.body.category,
+        price: Number(req.body.price),
+        sizes: req.body.sizes,
+        texture: req.body.texture,
+        onSale: req.body.onSale,
+        isAvailable: req.body.isAvailable,
+        image: downloadURL,
+      });
+      console.log(`Added Product ID:${response.id} to Firestore}`);
+      res.send(response.id);
     } catch (error) {
       return next(ApiError.internal('You request is not processed', err));
     }
