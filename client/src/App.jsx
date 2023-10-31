@@ -9,6 +9,7 @@ import Dashboard from './pages/auth/Dashboard';
 import ProductsMenu from './pages/product/ProductsMenu';
 import ProductDetail from './pages/product/ProductDetail';
 import AddProduct from './pages/product/AddProduct';
+import EditProduct from './pages/product/EditProduct';
 import NotFound from './pages/NotFound';
 
 // Import components
@@ -40,6 +41,7 @@ function App() {
               {/* Add Route */}
               <Route path='add' element={<AddProduct />} />
               {/* Edit Route */}
+              <Route path='edit/:id' element={<EditProduct />} />
             </Route>
           </Route>
         </Route>

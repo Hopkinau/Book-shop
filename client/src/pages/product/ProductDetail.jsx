@@ -116,6 +116,10 @@ function ProductDetail() {
             <h2>{name}</h2>
             <p>{priceFormatter(price)}</p>
             <p>{description}</p>
+            <p>{category}</p>
+            <p>{sizes}</p>
+            <p>{texture}</p>
+            <p>{isAvailable}</p>
           </div>
 
           {/* AUTH LINKS: EDIT & DELETE */}

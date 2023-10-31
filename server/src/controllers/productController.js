@@ -1,10 +1,13 @@
 // Import modules
 const { db } = require('../config/db');
 const ApiError = require('../utilities/ApiError');
-const { storageBucketUpload } = require('../utilities/bucketServices');
+
 const debugREAD = require('debug')('app:read');
 const debugWRITE = require('debug')('app:write');
-
+const {
+  storageBucketUpload,
+  deleteFileFromBucket,
+} = require('../utilities/bucketServices');
 module.exports = {
   // [1A] GET ALL Products
   async getAllProducts(req, res, next) {
@@ -121,6 +124,73 @@ module.exports = {
   },
 
   // [4] PUT Product BY ID
+  async putProductById(req, res, next) {
+    // (a) Validation (JOI) Direct from Form (refactored)
+    debugWRITE(req.params);
+    debugWRITE(req.body);
+    debugWRITE(req.files);
+    debugWRITE(res.locals);
+
+    // (b1) File Upload to Storage Bucket
+    // IMAGE CHANGED: If the image is updated, a new file will be saved under req.files
+    // NOTE: We will call standard file uploader + we will ALSO need to delete the OLD image URL from the storage location (if there is one)
+    let downloadURL = null;
+    try {
+      if (req.files) {
+        // (i) Storage-Upload
+        const filename = res.locals.filename;
+        downloadURL = await storageBucketUpload(filename);
+
+        // (ii) Delete OLD image version in Storage Bucket, if it exists
+        if (req.body.uploadedFile) {
+          debugWRITE(`Deleting old image in storage: ${req.body.uploadedFile}`);
+          const bucketResponse = await deleteFileFromBucket(
+            req.body.uploadedFile
+          );
+        }
+
+        // (b2) IMAGE NOT CHANGED: We just pass back the current downloadURL and pass that back to the database, unchanged!
+      } else {
+        console.log(`No change to image in DB`);
+        downloadURL = req.body.image;
+      }
+
+      // [500 ERROR] Checks for Errors in our File Upload
+    } catch (err) {
+      return next(
+        ApiError.internal(
+          'An error occurred in saving the image to storage',
+          err
+        )
+      );
+    }
+
+    // (c) Store the document query in variable & call UPDATE method for ID
+    try {
+      const productRef = db.collection('products').doc(req.params.id);
+      const response = await productRef.update({
+        name: req.body.name,
+        description: req.body.description,
+        category: req.body.category,
+        price: Number(req.body.price),
+        sizes: req.body.sizes,
+        texture: req.body.texture,
+        onSale: req.body.onSale,
+        isAvailable: req.body.isAvailable,
+        image: downloadURL,
+      });
+      res.send(response);
+      console.log(response);
+      // [500 ERROR] Checks for Errors in our Query - issue with route or DB query
+    } catch (err) {
+      return next(
+        ApiError.internal(
+          'Your request could not be processed at this time',
+          err
+        )
+      );
+    }
+  },
 
   // [5] DELETE Product BY ID
 };

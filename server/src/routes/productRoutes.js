@@ -31,7 +31,17 @@ module.exports = () => {
   // GET BY ID Product
   router.get('/:id', ProductController.getProductById);
   // UPDATE BY ID Product
-
+  router.put(
+    '/:id',
+    [
+      ProductPolicy.validateProduct,
+      FilePolicy.filePayloadExists,
+      FilePolicy.fileSizeLimiter,
+      FilePolicy.fileExtLimiter(['.png', '.jpg', '.jpeg', '.gif']),
+      fileServerUpload,
+    ],
+    ProductController.putProductById
+  );
   // DELETE BY ID Product
 
   return router;
