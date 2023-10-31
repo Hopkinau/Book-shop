@@ -1,15 +1,17 @@
-//The main job is to upload file to bucket and return from the bucket
-
+// Import in modules
 const { bucket } = require('../config/db');
 const debugBucket = require('debug')('app:bucket');
+const config = require('../config/config');
 const uuid = require('uuid');
 const fs = require('fs');
+
 module.exports = {
   async storageBucketUpload(filename) {
-    //1.Generate a random UUID Storage Token
-    debugBucket('Firestore Filename:${filename} received');
+    // 1. GENERATE RANDOM UUID STORAGE TOKEN
+    debugBucket(`Firestore File Name: ${filename}`);
     const storageToken = uuid.v4();
-    //2.Declare filepath & options parameters for bucket upload
+
+    // 2. DECLARE FILEPATH & OPTIONS PARAMETER VARIABLES FOR CUSTOM BUCKET UPLOAD
     const serverFilePath = `./public/uploads/${filename}`;
     const options = {
       destination: filename,
@@ -22,28 +24,57 @@ module.exports = {
       },
     };
 
-    //3.Cloud Firestore upload call
+    // OPTIONAL DEBUGGING: Checks if server-side /uploads file exists before BUCKET UPLOAD
+    fs.access(serverFilePath, fs.F_OK, (err) => {
+      if (err) {
+        debugBucket(err);
+        return {
+          message: 'Error occurred in storing file to server',
+        };
+      } else {
+        debugBucket('File Successfully Stored in Server');
+      }
+    });
+
+    // 3. CLOUD FIRESTORE UPLOAD METHOD CALL
     const result = await bucket.upload(serverFilePath, options);
     const bucketName = result[0].metadata.bucket;
-    debugBucket(`Bucket Name:${bucketName}`);
+    debugBucket(`Bucket Name: ${bucketName}`);
 
-    //4.Construct download URL
+    // 4. CONSTRUCT DOWNLOAD URL
     const downloadURL = `https://firebasestorage.googleapis.com/v0/b/${bucketName}/o/${filename}?alt=media&token=${storageToken}`;
-    console.log(`File Successfully Uploaded to Bucket:${downloadURL}`);
+    console.log(`File Successfully Uploaded to Storage Bucket: ${downloadURL}`);
 
-    //5.Delete TEP file,in the local file
+    // 5. DELETE TEMPORARY FILE IN SERVER-SIDE UPLOADS
     fs.unlink(serverFilePath, (err) => {
       if (err) {
         debugBucket(err);
         return {
-          message: `File:${filename} could not be deleted`,
+          message:
+            'Error occurred in removing file from temporary local storage',
         };
       } else {
-        debugBucket(`File:${filename} deleted`);
+        debugBucket('File in temporary local storage deleted');
       }
     });
 
     return downloadURL;
+  },
+
+  getFileFromUrl(downloadURL) {
+    debugBucket(`DownloadURL from DB: ${downloadURL}`);
+
+    // Slice off the base URL from downloadURL
+    const baseURL = `https://firebasestorage.googleapis.com/v0/b/${config.db.storageBucket}/o/`;
+    let fileGlob = downloadURL.replace(baseURL, '');
+
+    // Remove everything after the query string
+    const indexOfEndPath = fileGlob.indexOf('?');
+    fileGlob = fileGlob.substring(0, indexOfEndPath);
+
+    // Return file glob to be deleted
+    debugBucket(`File in Bucket for Deletion: ${fileGlob}`);
+    return fileGlob;
   },
 
   async deleteFileFromBucket(uploadedFile) {
