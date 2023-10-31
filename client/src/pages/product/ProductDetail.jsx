@@ -83,6 +83,25 @@ function ProductDetail() {
     }
   }
 
+  // [2] DELETION OF DOCUMENT
+  const handleDeleteClick = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      // Call API - must match server route + pass id to route
+      const response = await productService.del(id);
+      console.log(response);
+
+      // onSuccess - Redirect
+      setLoading(false);
+      navigate('/store/products');
+    } catch (err) {
+      console.log(err?.response);
+      setError(true);
+      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+    }
+  };
+
   // CONDITIONAL LOAD: ERROR
   if (error) {
     return (
@@ -116,17 +135,13 @@ function ProductDetail() {
             <h2>{name}</h2>
             <p>{priceFormatter(price)}</p>
             <p>{description}</p>
-            <p>{category}</p>
-            <p>{sizes}</p>
-            <p>{texture}</p>
-            <p>{isAvailable}</p>
           </div>
 
           {/* AUTH LINKS: EDIT & DELETE */}
           {user && (
             <div>
               <TuLink to={`/store/product/edit/${id}`}>Edit</TuLink>
-              <TuButton onClick loadingState={loading}>
+              <TuButton onClick={handleDeleteClick} loadingState={loading}>
                 {loading ? (
                   <Spinner
                     as='span'

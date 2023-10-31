@@ -21,8 +21,11 @@ function put(id, data, uploadedfile) {
   const formData = prepareFormData(data, uploadedfile);
   return api.put('/api/products/' + id, formData, formConfig);
 }
-// DELETE - ProductDetail
 
+// DELETE - ProductDetail
+function del(id) {
+  return api.delete('/api/products/' + id);
+}
 // REFACTORED VARIABLES/FUNCTIONS: Repeated code better abstracted to keep source code DRY (called above)
 // [1] Form Config: sets the content header to form data
 const formConfig = {
@@ -59,6 +62,7 @@ const productService = {
   post,
   getById,
   put,
+  del,
 };
 
 export default productService;
