@@ -103,6 +103,7 @@ function AddProduct() {
             value={category}
             onChange={handleTextChange}
           >
+            <option value=''>Choose Product</option>
             <option value='kits'>Kits</option>
             <option value='training'>Training</option>
             <option value='apparel'>Apparel</option>
@@ -138,6 +139,7 @@ function AddProduct() {
                 value={sizes}
                 onChange={handleTextChange}
               >
+                <option value=''>Choose Size</option>
                 <option value='range'>XS to XL</option>
                 <option value='single'>One Size Fits All</option>
               </Form.Control>
