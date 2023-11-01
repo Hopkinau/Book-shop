@@ -48,11 +48,7 @@ const Header = () => {
                 Logout
               </TuButton>
             )}
-            {
-              <TuButton>
-                <RiShoppingCartFill />
-              </TuButton>
-            }
+            {}
           </Nav>
         </Navbar.Collapse>
       </Container>
