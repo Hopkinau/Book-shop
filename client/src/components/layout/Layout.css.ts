@@ -1,15 +1,18 @@
-import { style } from "@vanilla-extract/css";
+import { style } from '@vanilla-extract/css';
 import { vars } from '../../styles/themes.css';
 
 export const app = style({
   fontFamily: vars.fonts.body,
   backgroundColor: vars.colors.primary,
-  display: "flex",
-  flexDirection: "column",
-  minHeight: "100vh",
-})
+  display: 'flex',
+  flexDirection: 'column',
+  minHeight: '100vh',
+  // Set the background image URL
+  backgroundSize: 'cover', // Optional: You can customize the background size and other properties
+  backgroundPosition: 'center center',
+});
 
 export const appContent = style({
-  margin: `${vars.space["2x"]} 0`,
-  flex: 1
-})
+  margin: `${vars.space['2x']} 0`,
+  flex: 1,
+});

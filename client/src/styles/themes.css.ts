@@ -1,10 +1,10 @@
-import { createGlobalTheme } from "@vanilla-extract/css";
+import { createGlobalTheme } from '@vanilla-extract/css';
 import twColors from 'tailwindcss/colors';
 
-export const root = createGlobalTheme(":root", {
+export const root = createGlobalTheme(':root', {
   fonts: {
-    brand: "Montserrat, apple-system, sans-serif",
-    body: "Open Sans, apple-system, sans-serif",
+    brand: 'Montserrat, apple-system, sans-serif',
+    body: 'Open Sans, apple-system, sans-serif',
   },
   colors: {
     // Semantic tokens
@@ -23,9 +23,10 @@ export const root = createGlobalTheme(":root", {
     grey400: twColors.gray[400],
     grey500: twColors.gray[500],
     grey600: twColors.gray[600],
+    violet400: twColors.violet[400],
   },
   space: {
-    none: '0',
+    'none': '0',
     '1x': '8px',
     '2x': '16px',
     '3x': '24px',
@@ -36,16 +37,16 @@ export const root = createGlobalTheme(":root", {
   fontSizes: {
     '1x': '8px',
     '2x': '12px',
-    '3x': '16px', 
-    '4x': '20px', 
-    '5x': '24px', 
+    '3x': '16px',
+    '4x': '20px',
+    '5x': '24px',
   },
   fontWeights: {
-    light: "300",
-    normal: "500",
-    bold: "600",
-    bolder: "700",
-  }
-})
+    light: '300',
+    normal: '500',
+    bold: '600',
+    bolder: '700',
+  },
+});
 
 export const vars = { ...root };

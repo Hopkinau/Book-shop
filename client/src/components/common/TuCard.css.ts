@@ -27,7 +27,7 @@ export const leadCard = style({
 });
 
 export const cardTitle = style({
-  color: vars.colors.brandLight,
+  color: vars.colors.violet400,
   paddingBottom: '1rem',
   fontSize: '2em',
   fontWeight: vars.fontWeights.bold,

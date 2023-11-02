@@ -1,14 +1,17 @@
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import { Link } from 'react-router-dom';
 import * as styles from './Card.css';
 
 function GroupExample() {
   return (
     <CardGroup className={styles.group}>
-      <h5>Best Selling Books</h5>
+      <h5 className={styles.title}>Best Selling Books</h5>
       <Card>
         <Card.Body>
-          <Card.Title>1.Friends,Lovers and The Big Terrible Thing</Card.Title>
+          <Link to={`/store/products`}>
+            <Card.Title>1.Friends,Lovers and The Big Terrible Thing</Card.Title>
+          </Link>
           <Card.Text>
             The beloved star of Friends takes us behind the scenes of the hit
             sitcom and his struggles with addiction in this candid, funny, and
@@ -21,12 +24,13 @@ function GroupExample() {
         </Card.Footer>
       </Card>
       <Card>
-        <Card.Img variant='top' src='holder.js/100px160' />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Link to={`/store/products`}>
+            <Card.Title>2. Bluey: Where's Bluey? At Christmas</Card.Title>
+          </Link>
           <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.{' '}
+            Based on the hit ABC KIDS TV show! Cheese and crackers, it's
+            Christmas!
           </Card.Text>
         </Card.Body>
         <Card.Footer>
@@ -34,9 +38,10 @@ function GroupExample() {
         </Card.Footer>
       </Card>
       <Card>
-        <Card.Img variant='top' src='holder.js/100px160' />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
+          <Link to={`/store/products`}>
+            <Card.Title>Card title</Card.Title>
+          </Link>
           <Card.Text>
             This is a wider card with supporting text below as a natural lead-in
             to additional content. This card has even longer content than the

@@ -2,14 +2,14 @@ import * as styles from './Layout.css';
 import { Outlet } from 'react-router-dom';
 import { ToastContainer, Slide } from 'react-toastify';
 
-import Header from "./Header"
-import Footer from './Footer'
+import Header from './Header';
+import Footer from './Footer';
 
 const Layout = () => {
   return (
     <div className={styles.app}>
-      <ToastContainer 
-        style={{ textAlign: "center" }} 
+      <ToastContainer
+        style={{ textAlign: 'center' }}
         position='top-center'
         autoClose={5000}
         hideProgressBar
@@ -20,7 +20,7 @@ const Layout = () => {
         draggable
         pauseOnHover
         transition={Slide}
-        theme="colored"
+        theme='colored'
       />
       <Header />
       <div className={styles.appContent}>
@@ -28,7 +28,7 @@ const Layout = () => {
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

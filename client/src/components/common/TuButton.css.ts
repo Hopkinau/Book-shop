@@ -2,20 +2,34 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '../../styles/themes.css';
 
 export const button = style({
-  'margin': vars.space['1x'],
-  'padding': vars.space['1x'],
-  'color': vars.colors.primary,
-  'backgroundColor': vars.colors.complementary,
-  'borderRadius': 0,
-  'border': `3px ${vars.colors.complementary} solid`,
-  'textTransform': 'uppercase',
-  'fontFamily': vars.fonts.brand,
-  'fontWeight': vars.fontWeights.bolder,
-  'textAlign': 'center',
-
   ':hover': {
     color: vars.colors.complementary,
     backgroundColor: vars.colors.primary,
     border: `3px ${vars.colors.complementary} solid`,
   },
+});
+
+export const stage = style({
+  display: 'flex',
+  position: 'absolute',
+  left: 0,
+  top: 0,
+  width: '100vw',
+  height: '100vh',
+
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: vars.colors.primary,
+  boxSizing: 'border-box',
+  // box-sizing: border-box,
+  // position: absolute,
+  // left: 0,
+  // top: 0,
+  // width: 100vw,
+  // height: 100vh,
+  // overflow: hidden,
+  // display: flex,
+  // align-items: center,
+  // justify-content: center,
+  // background-color: #65799b,
 });

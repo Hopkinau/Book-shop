@@ -6,7 +6,6 @@ import TuLink from '../common/TuLink';
 
 import { Link } from 'react-router-dom';
 import { Container, Navbar, Nav } from 'react-bootstrap';
-import { RiShoppingCartFill } from 'react-icons/ri';
 
 const Header = () => {
   // ACCESS VARIABLES FROM HOOKS

@@ -139,7 +139,7 @@ function ProductDetail() {
 
           {/* AUTH LINKS: EDIT & DELETE */}
           {user && (
-            <div>
+            <div className={styles.productButton}>
               <TuLink to={`/store/product/edit/${id}`}>Edit</TuLink>
               <TuButton onClick={handleDeleteClick} loadingState={loading}>
                 {loading ? (
