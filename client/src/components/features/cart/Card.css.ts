@@ -17,3 +17,25 @@ export const group = style({
 export const title = style({
   backgroundColor: vars.colors.primary,
 });
+export const topic = style({
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'absolute',
+  top: '250px',
+  left: '30%',
+  marginTop: '100px',
+  alignContent: 'center',
+  justifyContent: 'center',
+  width: '30%',
+  padding: vars.space['1x'],
+  backgroundColor: vars.colors.success,
+  color: vars.colors.primary,
+});
+export const btn = style({
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'absolute',
+  top: '10%',
+  left: '40%',
+  marginTop: '100px',
+});

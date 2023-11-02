@@ -5,7 +5,7 @@ export const bgImage = style({
   position: 'relative',
 
   width: '100vw',
-  height: '100vh',
+  height: 'auto',
   overflow: 'hidden',
   display: 'flex',
   alignItems: 'center',
