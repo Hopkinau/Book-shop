@@ -23,7 +23,7 @@ export const root = createGlobalTheme(':root', {
     grey400: twColors.gray[400],
     grey500: twColors.gray[500],
     grey600: twColors.gray[600],
-    violet400: twColors.violet[400],
+    violet300: twColors.violet[300],
   },
   space: {
     'none': '0',

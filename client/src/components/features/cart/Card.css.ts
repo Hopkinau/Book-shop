@@ -30,8 +30,8 @@ export const topic = style({
   width: '40%',
 
   padding: vars.space['2x'],
-  backgroundColor: vars.colors.success,
-  color: vars.colors.primary,
+  backgroundColor: vars.colors.primary,
+  color: vars.colors.complementary,
   paddingRight: vars.space['2x'],
 });
 export const btn = style({
@@ -42,7 +42,10 @@ export const btn = style({
   'left': '40%',
   'marginTop': '100px',
   'padding': vars.space['2x'],
-  'backgroundColor': vars.colors.success,
+  'backgroundColor': vars.colors.violet300,
+  'fontSize': vars.fontSizes['3x'],
+  'fontWeight': vars.fontWeights.bold,
+  'color': vars.colors.complementary,
   ':hover': {
     color: vars.colors.complementary,
     backgroundColor: vars.colors.primary,

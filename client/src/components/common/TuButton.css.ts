@@ -5,7 +5,7 @@ export const button = style({
   ':hover': {
     color: vars.colors.complementary,
     backgroundColor: vars.colors.primary,
-    border: `3px ${vars.colors.complementary} solid`,
+    border: `2px ${vars.colors.complementary} solid`,
   },
 });
 
@@ -19,7 +19,7 @@ export const stage = style({
 
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: vars.colors.primary,
+  backgroundColor: vars.colors.violet300,
   boxSizing: 'border-box',
   // box-sizing: border-box,
   // position: absolute,
