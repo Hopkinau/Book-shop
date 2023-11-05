@@ -23,19 +23,29 @@ export const topic = style({
   position: 'absolute',
   top: '250px',
   left: '30%',
+
   marginTop: '100px',
   alignContent: 'center',
   justifyContent: 'center',
-  width: '30%',
-  padding: vars.space['1x'],
+  width: '40%',
+
+  padding: vars.space['2x'],
   backgroundColor: vars.colors.success,
   color: vars.colors.primary,
+  paddingRight: vars.space['2x'],
 });
 export const btn = style({
-  display: 'flex',
-  flexDirection: 'column',
-  position: 'absolute',
-  top: '10%',
-  left: '40%',
-  marginTop: '100px',
+  'display': 'flex',
+  'flexDirection': 'column',
+  'position': 'absolute',
+  'top': '10%',
+  'left': '40%',
+  'marginTop': '100px',
+  'padding': vars.space['2x'],
+  'backgroundColor': vars.colors.success,
+  ':hover': {
+    color: vars.colors.complementary,
+    backgroundColor: vars.colors.primary,
+    border: `3px ${vars.colors.complementary} solid`,
+  },
 });

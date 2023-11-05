@@ -7,9 +7,9 @@ function GroupExample() {
   return (
     <>
       <div className={styles.topic}>
-        <h1>Welcome to Book Shop</h1>
+        <h1>Welcome to Blue Mountain Book Shop</h1>
         <Link to={`/store/products`}>
-          <button className={styles.btn}>Click Me</button>
+          <button className={styles.btn}>Shopping Now </button>
         </Link>
       </div>
       <CardGroup className={styles.group}>
@@ -29,7 +29,7 @@ function GroupExample() {
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className='text-muted'>Last updated 3 mins ago</small>
+            <small className='text-muted'></small>
           </Card.Footer>
         </Card>
         <Card>
@@ -43,22 +43,23 @@ function GroupExample() {
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className='text-muted'>Last updated 3 mins ago</small>
+            <small className='text-muted'></small>
           </Card.Footer>
         </Card>
         <Card>
           <Card.Body>
             <Link to={`/store/products`}>
-              <Card.Title>Card title</Card.Title>
+              <Card.Title>3.Good Life Growing</Card.Title>
             </Link>
             <Card.Text>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This card has even longer content
-              than the first to show that equal height action.
+              Good Life Growing provides the inspiration and know-how to grow
+              your own fruit and veg in any Australian climate. This bountiful
+              guide from Gardening Australia presenter Hannah Moloney is packed
+              with practical solutions for all conditions and every gardener.
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className='text-muted'>Last updated 3 mins ago</small>
+            <small className='text-muted'></small>
           </Card.Footer>
         </Card>
       </CardGroup>
