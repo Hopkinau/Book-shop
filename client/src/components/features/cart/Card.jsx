@@ -9,7 +9,7 @@ function GroupExample() {
       <div className={styles.topic}>
         <h1>Welcome to Blue Mountain Book Shop</h1>
         <Link to={`/store/products`}>
-          <button className={styles.btn}>Shopping Now </button>
+          <button className={styles.btn}>Buy Now </button>
         </Link>
       </div>
       <CardGroup className={styles.group}>
