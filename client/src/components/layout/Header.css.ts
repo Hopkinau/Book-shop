@@ -55,3 +55,10 @@ export const login = style({
   gap: vars.space['2x'],
   marginLeft: '10px',
 });
+export const dropdown = style({
+  display: 'flex',
+  left: '80%',
+  position: 'absolute',
+  top: '10%',
+  color: vars.colors.violet300,
+});
