@@ -3,7 +3,7 @@ import * as styles from './Header.css';
 import useAuth from '../../hooks/useAuth';
 import TuButton from '../common/TuButton';
 import TuLink from '../common/TuLink';
-
+import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 
@@ -35,8 +35,18 @@ const Header = () => {
           </Nav>
           {/* AUTH NAVLINKS */}
           <Nav>
-            {!user && <TuLink to='/signup'>Sign&nbsp;Up</TuLink>}
-            {!user && <TuLink to='/login'>Log&nbsp;In</TuLink>}
+            {!user && (
+              <Link to='signup'>
+                <BsFillPersonLinesFill />
+                Sign In
+              </Link>
+            )}
+            {!user && (
+              <Link to='login' className={styles.login}>
+                <BsFillPersonLinesFill />
+                Login In
+              </Link>
+            )}
             {user && <TuLink to='/dashboard'>Dashboard</TuLink>}
             {user && (
               <TuButton
