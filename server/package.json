@@ -27,7 +27,7 @@
   "scripts": {
     "dev": "DEBUG=app* nodemon src/index",
     "devpc": "set DEBUG=app:* & nodemon src/index",
-    "server": "node src/index",
+    "server": "nodemon src/index",
     "client": "cd ../ && npm start --prefix client",
     "devstack": "concurrently -k \"yarn debug\" \"yarn client\"",
     "prodstack": "concurrently -k \"yarn server\" \"yarn client\""

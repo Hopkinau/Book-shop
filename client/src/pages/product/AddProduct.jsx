@@ -14,8 +14,8 @@ function AddProduct() {
     description: '',
     category: '',
     price: 0,
-    sizes: '',
-    texture: '',
+    author: '',
+
     onSale: false,
     isAvailable: true,
     image: '',
@@ -28,8 +28,8 @@ function AddProduct() {
     description,
     category,
     price,
-    sizes,
-    texture,
+    author,
+
     onSale,
     isAvailable,
   } = productData;
@@ -67,7 +67,7 @@ function AddProduct() {
   };
 
   return (
-    <TuCard title='Add Product'>
+    <TuCard title='Add Book'>
       <Form onSubmit={handleSubmit}>
         {/* GROUP 1: NAME */}
         <Form.Group className='mb-3'>
@@ -132,30 +132,21 @@ function AddProduct() {
 
             {/* 4B: SIZES */}
             <Col lg={4} md={4} sm={12}>
-              <Form.Label>Product sizing range</Form.Label>
+              <Form.Label>Author</Form.Label>
               <Form.Control
                 as='select'
                 name='sizes'
-                value={sizes}
+                value={author}
                 onChange={handleTextChange}
               >
-                <option value=''>Choose Delivery</option>
+                <option value=''>Author</option>
                 <option value='range'>PickUp</option>
                 <option value='single'>Post</option>
               </Form.Control>
             </Col>
 
             {/* 4C: TEXTURE */}
-            <Col lg={4} md={4} sm={12}>
-              <Form.Label>Product texture</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter product texture'
-                name='texture'
-                value={texture}
-                onChange={handleTextChange}
-              />
-            </Col>
+
             {/* END OF PRODUCT DETAILS ROW */}
           </Row>
         </Form.Group>

@@ -13,8 +13,7 @@ module.exports = {
       description: Joi.string().min(3).max(2000).required(),
       category: Joi.string().required(),
       price: Joi.number().required(),
-      sizes: Joi.string().min(3).max(50).required(),
-      texture: Joi.string().min(3).max(50).required(),
+      author: Joi.string().min(1).max(50).required(),
       onSale: Joi.boolean().required(),
       isAvailable: Joi.boolean().required(),
       image: Joi.any(),
@@ -36,8 +35,7 @@ module.exports = {
 
         case 'description':
         case 'category':
-        case 'sizes':
-        case 'texture':
+        case 'author':
           next(
             ApiError.badRequest(
               'You must provide a valid product information including description, category, sizes and/or texture'

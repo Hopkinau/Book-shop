@@ -34,8 +34,8 @@ module.exports = {
             description: doc.data().description,
             category: doc.data().category,
             price: doc.data().price,
-            sizes: doc.data().sizes,
-            texture: doc.data().texture,
+            author: doc.data().author,
+
             onSale: doc.data().onSale,
             isAvailable: doc.data().isAvailable,
             image: doc.data().image,
@@ -80,8 +80,8 @@ module.exports = {
         description: req.body.description,
         category: req.body.category,
         price: Number(req.body.price),
-        sizes: req.body.sizes,
-        texture: req.body.texture,
+        author: req.body.author,
+
         onSale: req.body.onSale,
         isAvailable: req.body.isAvailable,
         image: downloadURL,
@@ -175,7 +175,7 @@ module.exports = {
         category: req.body.category,
         price: Number(req.body.price),
         sizes: req.body.sizes,
-        texture: req.body.texture,
+
         onSale: req.body.onSale,
         isAvailable: req.body.isAvailable,
         image: downloadURL,

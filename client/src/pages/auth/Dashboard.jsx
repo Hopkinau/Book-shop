@@ -1,7 +1,8 @@
 import useAuth from '../../hooks/useAuth';
 import TuCard from '../../components/common/TuCard';
 import TuButton from '../../components/common/TuButton';
-
+import { Link } from 'react-router-dom';
+import * as styles from './Dashboard.css';
 const Dashboard = () => {
   // HOOK: CONTEXT FOR AUTH
   const { user, logout } = useAuth();
@@ -32,14 +33,15 @@ const Dashboard = () => {
 
       {/* Log Out & Forces a Redirect */}
       {user && (
-        <div className='mt-5'>
-          <TuButton
+        <div className={styles.btn}>
+          <Link to='/store/products'>Buy Now</Link>
+          <Link
             onClick={() => {
               logout();
             }}
           >
             Log Out
-          </TuButton>
+          </Link>
         </div>
       )}
     </TuCard>
