@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import * as styles from './NotFound.css';
 import CardDemo from '../components/features/cart/Card';
-
+import Carousel from '../components/features/cart/Carousel';
 const Home = () => {
   return (
     <Fragment>
@@ -11,8 +11,8 @@ const Home = () => {
           alt='book'
           className={styles.bgImage}
         />
-
         <CardDemo />
+        <Carousel />
       </div>
       <></>
     </Fragment>

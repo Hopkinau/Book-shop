@@ -13,6 +13,7 @@ export const root = createGlobalTheme(':root', {
     brand: twColors.emerald[600],
     brandLight: twColors.emerald[400],
     brandDark: twColors.emerald[700],
+    white: twColors.neutral[50],
 
     // Color tokens
     success: twColors.green[400],
