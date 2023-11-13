@@ -27,8 +27,7 @@ function EditProduct() {
     description: '',
     category: '',
     price: 0,
-    sizes: '',
-    texture: '',
+    author: '',
     onSale: false,
     isAvailable: true,
     image: '',
@@ -47,8 +46,7 @@ function EditProduct() {
     description,
     category,
     price,
-    sizes,
-    texture,
+    author,
     onSale,
     isAvailable,
     image,
@@ -192,7 +190,7 @@ function EditProduct() {
         <Form.Group className='mb-3'>
           <Row>
             {/* 4A: PRICE */}
-            <Col lg={4} md={4} sm={12}>
+            <Col lg={6} md={6} sm={12}>
               <Form.Label>Product price</Form.Label>
               <InputGroup>
                 <InputGroup.Text id='price-dollar'>$</InputGroup.Text>
@@ -209,30 +207,21 @@ function EditProduct() {
             </Col>
 
             {/* 4B: SIZES */}
-            <Col lg={4} md={4} sm={12}>
-              <Form.Label>Delivery Method</Form.Label>
-              <Form.Control
-                as='select'
-                name='sizes'
-                value={sizes}
-                onChange={handleTextChange}
-              >
-                <option value='range'>PickUp</option>
-                <option value='single'>Post</option>
-              </Form.Control>
+            <Col lg={6} md={6} sm={12}>
+              <Form.Group className='mb-3'>
+                <Form.Label>Author</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Enter author name'
+                  name='author'
+                  value={author}
+                  onChange={handleTextChange}
+                />
+              </Form.Group>
             </Col>
 
             {/* 4C: TEXTURE */}
-            <Col lg={4} md={4} sm={12}>
-              <Form.Label>Product texture</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter product texture'
-                name='texture'
-                value={texture}
-                onChange={handleTextChange}
-              />
-            </Col>
+
             {/* END OF PRODUCT DETAILS ROW */}
           </Row>
         </Form.Group>

@@ -14,7 +14,7 @@ export const root = createGlobalTheme(':root', {
     brandLight: twColors.emerald[400],
     brandDark: twColors.emerald[700],
     white: twColors.neutral[50],
-
+    blue: twColors.blue[200],
     // Color tokens
     success: twColors.green[400],
     warning: twColors.amber[400],

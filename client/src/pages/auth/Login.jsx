@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Form, Spinner } from 'react-bootstrap';
+import { Button, Form, Spinner } from 'react-bootstrap';
 
 // LOCAL MODULES
-import * as styles from './Signup.css'
+import * as styles from './login.css';
 import authService from '../../services/authService';
-import useAuth from '../../hooks/useAuth'
-import TuCard from '../../components/common/TuCard'
+import useAuth from '../../hooks/useAuth';
+import TuCard from '../../components/common/TuCard';
 import TuButton from '../../components/common/TuButton';
+import { style } from '@vanilla-extract/css';
 
 function Login() {
   // ACCESS VARIABLES FROM HOOKS
@@ -17,7 +18,7 @@ function Login() {
   // HOOK: SETTING COMPONENT STATE (& init values)
   const [user, setUser] = useState({
     email: '',
-    password: ''
+    password: '',
   });
   const [loading, setLoading] = useState(false);
 
@@ -27,8 +28,8 @@ function Login() {
   // FORM FUNCTIONS
   // [1] handleTextChange handles state value change for all login data
   const handleTextChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value })
-  }
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
   // [2] handleSubmit will submit form data to API
   const handleSubmit = async (e) => {
@@ -40,45 +41,70 @@ function Login() {
       const response = await authService.login(user);
       loginSaveUser(response.data);
       navigate('/dashboard');
-    } catch(err) {
+    } catch (err) {
       console.log(err?.response);
-      setTimeout(() => {setLoading(false)}, 1000);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
     }
-  }
+  };
 
   return (
-    <TuCard title="Log In" authform>
-      <Form onSubmit={ handleSubmit }>
+    <TuCard title='Log In' authform>
+      <Form onSubmit={handleSubmit}>
         {/* GROUP 1: EMAIL */}
-        <Form.Group className="mb-3" controlId="email">
+        <Form.Group className='mb-3' controlId='email'>
           <Form.Label className={styles.styledLabel}>Email</Form.Label>
-          <Form.Control className={styles.styledInput} type="email" placeholder="Email" name="email" value={email} onChange={ handleTextChange } required />
+          <Form.Control
+            className={styles.styledInput}
+            type='email'
+            placeholder='Email'
+            name='email'
+            value={email}
+            onChange={handleTextChange}
+            required
+          />
         </Form.Group>
 
         {/* GROUP 2: PASSWORD */}
-        <Form.Group className="mb-3" controlId="password">
+        <Form.Group className='mb-3' controlId='password'>
           <Form.Label className={styles.styledLabel}>Password</Form.Label>
-          <Form.Control className={styles.styledInput} type="password" placeholder="Password" name="password" value={password} onChange={ handleTextChange } required />
+          <Form.Control
+            className={styles.styledInput}
+            type='password'
+            placeholder='Password'
+            name='password'
+            value={password}
+            onChange={handleTextChange}
+            required
+          />
         </Form.Group>
 
         {/* SUBMIT BUTTON */}
-        <TuButton loadingState={loading}>
-          {loading ? <Spinner
-            as="span"
-            animation="border"
-            size="sm"
-            role="status"
-            aria-hidden="true"
-          /> : 'Submit'}
-        </TuButton>
+
+        <button className={styles.btn}>Login</button>
+        {/* <TuButton className={styles.btn} loadingState={loading}>
+          {loading ? (
+            <Spinner
+              as='span'
+              animation='border'
+              size='sm'
+              role='status'
+              aria-hidden='true'
+            />
+          ) : (
+            'Submit'
+          )}
+        </TuButton> */}
       </Form>
       <div className={styles.userNav}>
-        <span>Not a member? &nbsp;
-          <Link to="/signup">Sign Up</Link>
+        <span>
+          Not a member? &nbsp;
+          <Link to='/signup'>Sign Up</Link>
         </span>
       </div>
     </TuCard>
-  )
+  );
 }
 
-export default Login
+export default Login;

@@ -5,6 +5,7 @@ import { Form, InputGroup, Row, Col, Spinner } from 'react-bootstrap';
 import productService from '../../services/productService';
 import TuCard from '../../components/common/TuCard';
 import TuButton from '../../components/common/TuButton';
+import * as styles from './AddProduct.css';
 
 function AddProduct() {
   // HOOK: SETTING COMPONENT STATE (& init values)
@@ -114,7 +115,7 @@ function AddProduct() {
         <Form.Group className='mb-3'>
           <Row>
             {/* 4A: PRICE */}
-            <Col lg={4} md={4} sm={12}>
+            <Col lg={6} md={6} sm={12}>
               <Form.Label>Product price</Form.Label>
               <InputGroup>
                 <InputGroup.Text id='price-dollar'>$</InputGroup.Text>
@@ -131,18 +132,17 @@ function AddProduct() {
             </Col>
 
             {/* 4B: SIZES */}
-            <Col lg={4} md={4} sm={12}>
-              <Form.Label>Author</Form.Label>
-              <Form.Control
-                as='select'
-                name='sizes'
-                value={author}
-                onChange={handleTextChange}
-              >
-                <option value=''>Author</option>
-                <option value='range'>PickUp</option>
-                <option value='single'>Post</option>
-              </Form.Control>
+            <Col lg={6} md={6} sm={12}>
+              <Form.Group className='mb-3'>
+                <Form.Label>Author</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Enter author name'
+                  name='author'
+                  value={author}
+                  onChange={handleTextChange}
+                />
+              </Form.Group>
             </Col>
 
             {/* 4C: TEXTURE */}
@@ -196,7 +196,7 @@ function AddProduct() {
         </Form.Group>
 
         {/* SUBMIT BUTTON */}
-        <TuButton loadingState={loading}>
+        <button className={styles.btn}>
           {loading ? (
             <Spinner
               as='span'
@@ -208,7 +208,7 @@ function AddProduct() {
           ) : (
             'Submit'
           )}
-        </TuButton>
+        </button>
       </Form>
     </TuCard>
   );

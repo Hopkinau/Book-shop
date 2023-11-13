@@ -61,4 +61,18 @@ export const dropdown = style({
   position: 'absolute',
   top: '10%',
   color: vars.colors.violet300,
+  backgroundColor: vars.colors.blue,
+});
+export const link = style({
+  display: 'inline-block',
+
+  padding: '15px',
+  fontFamily: 'inherit',
+  fontSize: '16px',
+  border: 'none',
+  borderRadius: '5px',
+  textDecorationLine: 'none',
+  color: vars.colors.violet300,
+  fontWeight: vars.fontWeights.bolder,
+  letterSpacing: '0.1em',
 });

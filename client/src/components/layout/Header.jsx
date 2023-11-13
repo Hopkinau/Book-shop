@@ -19,24 +19,27 @@ const Header = () => {
       <h1 className='text-center mt-4 mb-4'>Blue Mountain Book Shop</h1>
       <Nav className='justify-content-center' activeKey='/home'>
         <Nav.Item>
-          <Nav.Link href='/'>Home</Nav.Link>
+          <Nav.Link className={styles.link} href='/'>
+            Home
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href='/store/products'>Product</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey='link-2'>Contact</Nav.Link>
+          <Nav.Link className={styles.link} href='/store/products'>
+            Product
+          </Nav.Link>
         </Nav.Item>
       </Nav>
 
-      <DropdownButton
-        id='dropdown-basic-button'
-        title='Login/Join'
-        className={styles.dropdown}
-      >
-        <Dropdown.Item href='/signup'>Sign In</Dropdown.Item>
-        <Dropdown.Item href='/login'>Log In</Dropdown.Item>
-      </DropdownButton>
+      <Dropdown className={styles.dropdown}>
+        <Dropdown.Toggle variant='Info' id='dropdown-basic'>
+          Sign In/Log In
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item href='/login'>Log In</Dropdown.Item>
+          <Dropdown.Item href='/signup'>Sign In</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     </>
   );
 };

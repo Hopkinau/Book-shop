@@ -33,9 +33,12 @@ const Dashboard = () => {
 
       {/* Log Out & Forces a Redirect */}
       {user && (
-        <div className={styles.btn}>
-          <Link to='/store/products'>Buy Now</Link>
+        <div>
+          <Link className={styles.buynowbtn} to='/store/products'>
+            Buy Now
+          </Link>
           <Link
+            className={styles.logoutbtn}
             onClick={() => {
               logout();
             }}

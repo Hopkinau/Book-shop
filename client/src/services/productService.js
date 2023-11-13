@@ -44,8 +44,8 @@ function prepareFormData(data, uploadedfile) {
   formData.append('description', data.description);
   formData.append('category', data.category);
   formData.append('price', data.price);
-  formData.append('sizes', data.sizes);
-  formData.append('texture', data.texture);
+  formData.append('author', data.author);
+
   formData.append('onSale', data.onSale);
   formData.append('isAvailable', data.isAvailable);
   formData.append('image', data.image);

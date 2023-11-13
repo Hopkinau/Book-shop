@@ -21,7 +21,6 @@ function App() {
     <Routes>
       {/* MAIN LAYOUT WRAPPER & ROUTED CHILDREN */}
       <Route path='/' element={<Layout />}>
-        z
         <Route index element={<Home />} />
         {/* AUTH */}
         <Route path='signup' element={<Signup />} />

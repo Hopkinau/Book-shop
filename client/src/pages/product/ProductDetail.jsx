@@ -24,8 +24,8 @@ function ProductDetail() {
     description: '',
     category: '',
     price: 0,
-    sizes: '',
-    texture: '',
+    author: '',
+
     onSale: false,
     isAvailable: true,
     image: '',
@@ -33,17 +33,8 @@ function ProductDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   // Destructure data state nested object properties
-  const {
-    id,
-    name,
-    description,
-    category,
-    price,
-    sizes,
-    texture,
-    isAvailable,
-    image,
-  } = productData;
+  const { id, name, description, category, price, author, isAvailable, image } =
+    productData;
 
   // HOOK: Prevention of useEffect calling TWICE (React v18)
   const effectRan = useRef(false);
@@ -133,8 +124,18 @@ function ProductDetail() {
           {/* HERO BOX */}
           <div className={styles.productHeroContainer}>
             <h2>{name}</h2>
-            <p>{priceFormatter(price)}</p>
-            <p>{description}</p>
+            <p>
+              <span className={styles.span}>Price:</span>
+              {priceFormatter(price)}
+            </p>
+            <p>
+              <span className={styles.span}>Description:</span>
+              {description}
+            </p>
+            <p>
+              <span className={styles.span}>Author:</span>
+              {author}
+            </p>
           </div>
 
           {/* AUTH LINKS: EDIT & DELETE */}

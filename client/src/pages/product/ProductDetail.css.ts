@@ -33,3 +33,8 @@ export const productHeroContainer = style({
   padding: vars.space['0x'],
   width: '100%',
 });
+
+export const span = style({
+  fontSize: vars.fontSizes['4x'],
+  fontWeight: vars.fontWeights.bolder,
+});

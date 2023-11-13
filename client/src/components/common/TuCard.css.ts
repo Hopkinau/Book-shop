@@ -17,7 +17,7 @@ export const container = style({
 });
 
 export const leadCard = style({
-  background: vars.colors.primary,
+  background: vars.colors.white,
   color: vars.colors.complementary,
   margin: 'auto',
   padding: '2rem',
