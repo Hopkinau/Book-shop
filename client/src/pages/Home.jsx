@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import * as styles from './NotFound.css';
+import * as styles from './Home.css';
 import CardDemo from '../components/features/cart/Card';
 import Carousel from '../components/features/cart/Carousel';
 const Home = () => {

@@ -16,7 +16,7 @@ module.exports = {
       // Store the collection reference in variable
       const productRef = db.collection('products');
       // Fetch ALL Currencies and store response in "snapshot"
-      const snapshot = await productRef.orderBy('name').get();
+      const snapshot = await productRef.orderBy('name', 'desc').get();
 
       // [400 ERROR] Check for User Asking for Non-Existent Documents
       if (snapshot.empty) {
@@ -81,7 +81,6 @@ module.exports = {
         category: req.body.category,
         price: Number(req.body.price),
         author: req.body.author,
-
         onSale: req.body.onSale,
         isAvailable: req.body.isAvailable,
         image: downloadURL,
@@ -174,8 +173,7 @@ module.exports = {
         description: req.body.description,
         category: req.body.category,
         price: Number(req.body.price),
-        sizes: req.body.sizes,
-
+        author: req.body.author,
         onSale: req.body.onSale,
         isAvailable: req.body.isAvailable,
         image: downloadURL,
