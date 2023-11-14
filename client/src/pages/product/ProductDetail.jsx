@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Container, Spinner } from 'react-bootstrap';
 
 // Local modules
@@ -25,7 +25,6 @@ function ProductDetail() {
     category: '',
     price: 0,
     author: '',
-
     onSale: false,
     isAvailable: true,
     image: '',
@@ -141,8 +140,11 @@ function ProductDetail() {
           {/* AUTH LINKS: EDIT & DELETE */}
           {user && (
             <div className={styles.productButton}>
-              <TuLink to={`/store/product/edit/${id}`}>Edit</TuLink>
-              <TuButton onClick={handleDeleteClick} loadingState={loading}>
+              <Link to={`/store/product/edit/${id}`}>
+                <button className={styles.editebtn}>Edit</button>
+              </Link>
+
+              <button className={styles.deletebtn} onClick={handleDeleteClick}>
                 {loading ? (
                   <Spinner
                     as='span'
@@ -154,7 +156,7 @@ function ProductDetail() {
                 ) : (
                   'Delete'
                 )}
-              </TuButton>
+              </button>
             </div>
           )}
         </div>

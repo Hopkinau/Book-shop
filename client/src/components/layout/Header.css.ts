@@ -65,7 +65,6 @@ export const dropdown = style({
 });
 export const link = style({
   display: 'inline-block',
-
   padding: '15px',
   fontFamily: 'inherit',
   fontSize: '16px',

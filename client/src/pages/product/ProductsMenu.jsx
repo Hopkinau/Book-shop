@@ -6,7 +6,8 @@ import productService from '../../services/productService';
 import ProductsList from '../../components/features/products/ProductsList';
 import TuLoader from '../../components/common/TuLoader';
 import axios from 'axios';
-
+import * as styles from './ProductsMenu.css';
+import { Link } from 'react-router-dom';
 function ProductsPage() {
   // PRODUCTS STATE
   const { user } = useAuth();
@@ -67,9 +68,9 @@ function ProductsPage() {
       </p>
       {/* Admin Section:Add page */}
       {user && (
-        <div className='py-4'>
-          <TuLink to='/store/product/add'>Add Product</TuLink>
-        </div>
+        <Link to='/store/product/add'>
+          <button className={styles.btn}>Add Product</button>
+        </Link>
       )}
       {/* Products Menu */}
       {<ProductsList products={data} />}

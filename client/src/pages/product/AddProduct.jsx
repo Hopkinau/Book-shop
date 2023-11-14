@@ -4,7 +4,7 @@ import { Form, InputGroup, Row, Col, Spinner } from 'react-bootstrap';
 
 import productService from '../../services/productService';
 import TuCard from '../../components/common/TuCard';
-import TuButton from '../../components/common/TuButton';
+
 import * as styles from './AddProduct.css';
 
 function AddProduct() {

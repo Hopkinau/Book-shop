@@ -15,6 +15,8 @@ import TuCard from '../../components/common/TuCard';
 import TuButton from '../../components/common/TuButton';
 import TuLoader from '../../components/common/TuLoader';
 
+import * as styles from './AddProduct.css';
+
 function EditProduct() {
   // CUSTOM HOOKS
   const params = useParams();
@@ -283,7 +285,7 @@ function EditProduct() {
         </Form.Group>
 
         {/* SUBMIT BUTTON */}
-        <TuButton loadingState={loading}>
+        <button className={styles.btn}>
           {loading ? (
             <Spinner
               as='span'
@@ -295,7 +297,7 @@ function EditProduct() {
           ) : (
             'Submit'
           )}
-        </TuButton>
+        </button>
       </Form>
     </TuCard>
   );
