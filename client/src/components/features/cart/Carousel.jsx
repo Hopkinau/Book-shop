@@ -17,9 +17,7 @@ export default function Carousel() {
             quisquam, laborum totam.
           </p>
           <p className={styles.testimonialAuthor}>Maria de Alemeida</p>
-          <p className={styles.testimonialJob}>
-            Senior Product Manager at EDP Comerical
-          </p>
+          <p className={styles.testimonialJob}>Testimonial</p>
         </blockquote>
         <button className={styles.btnLeft}>
           <svg

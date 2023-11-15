@@ -15,13 +15,13 @@ module.exports = () => {
   router.get('/', ProductController.getAllProducts);
 
   // GET onSALE Products
-
+  router.get('/onSale', ProductController.getOnSaleProducts);
   // POST Product
   router.post(
     '/',
     [
       ProductPolicy.validateProduct,
-      FilePolicy.filePayloadExists,
+      FilePolicy.filesPayloadExists,
       FilePolicy.fileSizeLimiter,
       FilePolicy.fileExtLimiter(['.png', '.jpg', '.jpeg', '.gif']),
       fileServerUpload,
@@ -35,7 +35,7 @@ module.exports = () => {
     '/:id',
     [
       ProductPolicy.validateProduct,
-      FilePolicy.filePayloadExists,
+      FilePolicy.filesPayloadExists,
       FilePolicy.fileSizeLimiter,
       FilePolicy.fileExtLimiter(['.png', '.jpg', '.jpeg', '.gif']),
       fileServerUpload,

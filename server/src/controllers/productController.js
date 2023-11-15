@@ -16,7 +16,11 @@ module.exports = {
       // Store the collection reference in variable
       const productRef = db.collection('products');
       // Fetch ALL Currencies and store response in "snapshot"
-      const snapshot = await productRef.orderBy('name', 'desc').get();
+      const snapshot = await productRef
+        .where('onSale', '==', 'true')
+        .orderBy('price', 'desc')
+        .limit(10)
+        .get();
 
       // [400 ERROR] Check for User Asking for Non-Existent Documents
       if (snapshot.empty) {
@@ -52,7 +56,92 @@ module.exports = {
   },
 
   // [1B] GET onSale Products
+  async getOnSaleProducts(req, res, next) {
+    try {
+      // Store the collection reference in variable & call GET method (with comp index)
+      const productRef = db.collection('products');
+      const snapshot = await productRef
+        .where('onSale', '==', 'true')
+        .orderBy('name', 'asc')
+        .limit(10)
+        .get();
 
+      // [400 ERROR] Check for User Asking for Non-Existent Documents
+      if (snapshot.empty) {
+        return next(
+          ApiError.badRequest('The items you were looking for do not exist')
+        );
+
+        // SUCCESS: Push object properties to array and send to client
+      } else {
+        let docs = [];
+        snapshot.forEach((doc) => {
+          docs.push({
+            id: doc.id,
+            name: doc.data().name,
+            description: doc.data().description,
+            category: doc.data().category,
+            price: doc.data().price,
+            author: doc.data().author,
+
+            onSale: doc.data().onSale,
+            isAvailable: doc.data().isAvailable,
+            image: doc.data().image,
+          });
+        });
+        res.send(docs);
+      }
+
+      // [500 ERROR] Checks for Errors in our Query - issue with route or DB query
+    } catch (err) {
+      return next(
+        ApiError.internal('The items selected could not be found', err)
+      );
+    }
+  },
+
+  async getAvailableProducts(req, res, next) {
+    try {
+      // Store the collection reference in variable & call GET method (with comp index)
+      const productRef = db.collection('products');
+      const snapshot = await productRef
+        .where('isAvailable', '==', 'false')
+        .orderBy('name', 'asc')
+        .limit(10)
+        .get();
+
+      // [400 ERROR] Check for User Asking for Non-Existent Documents
+      if (snapshot.empty) {
+        return next(
+          ApiError.badRequest('The items you were looking for do not exist')
+        );
+
+        // SUCCESS: Push object properties to array and send to client
+      } else {
+        let docs = [];
+        snapshot.forEach((doc) => {
+          docs.push({
+            id: doc.id,
+            name: doc.data().name,
+            description: doc.data().description,
+            category: doc.data().category,
+            price: doc.data().price,
+            author: doc.data().author,
+            onSale: doc.data().onSale,
+            isAvailable: doc.data().isAvailable,
+            image: doc.data().image,
+          });
+        });
+        res.send(docs);
+      }
+
+      // [500 ERROR] Checks for Errors in our Query - issue with route or DB query
+    } catch (err) {
+      return next(
+        ApiError.internal('The items selected could not be found', err)
+      );
+    }
+  },
   // [2] POST Product
   async postProduct(req, res, next) {
     debugWRITE(req.files);
@@ -148,7 +237,7 @@ module.exports = {
             req.body.uploadedFile
           );
         }
-
+        console.log(req.body);
         // (b2) IMAGE NOT CHANGED: We just pass back the current downloadURL and pass that back to the database, unchanged!
       } else {
         console.log(`No change to image in DB`);
@@ -219,7 +308,7 @@ module.exports = {
         // NOTE: We defined Ref earlier!
         const response = await productRef.delete({ exists: true });
 
-        // SUCCESS: Issue back response for timebeing
+        // SUCCESS: Issue back response for
         res.send(response);
       }
 

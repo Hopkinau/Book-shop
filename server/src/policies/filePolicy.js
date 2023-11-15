@@ -3,8 +3,8 @@ const path = require('path');
 //The filePolicy is a piece of middleware that validator the file upload
 
 //1.check file exists
-const filePayloadExists = (req, res, next) => {
-  if (!req.files && !req.body.uploadFile) {
+const filesPayloadExists = (req, res, next) => {
+  if (!req.files && !req.body.uploadedFile) {
     return next(ApiError.badRequest('No file was uploaded'));
   }
   next();
@@ -18,8 +18,8 @@ const fileSizeLimiter = (req, res, next) => {
     if (file.size > FILE_SIZE_LIMIT) {
       return next(ApiError.tooLarge(message));
     }
-    next();
   }
+  next();
 };
 //3.check file extension/type
 const fileExtLimiter = (allowedExtArray) => {
@@ -36,7 +36,7 @@ const fileExtLimiter = (allowedExtArray) => {
 };
 
 const filePolicy = {
-  filePayloadExists,
+  filesPayloadExists,
   fileSizeLimiter,
   fileExtLimiter,
 };

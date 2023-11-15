@@ -8,9 +8,6 @@ import { priceFormatter } from '../../utils/readUtils';
 import useAuth from '../../hooks/useAuth';
 import productService from '../../services/productService';
 import TuLoader from '../../components/common/TuLoader';
-import TuLink from '../../components/common/TuLink';
-import TuButton from '../../components/common/TuButton';
-
 function ProductDetail() {
   // CUSTOM HOOKS
   const { user } = useAuth();
@@ -32,8 +29,7 @@ function ProductDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   // Destructure data state nested object properties
-  const { id, name, description, category, price, author, isAvailable, image } =
-    productData;
+  const { id, name, description, price, author, image } = productData;
 
   // HOOK: Prevention of useEffect calling TWICE (React v18)
   const effectRan = useRef(false);

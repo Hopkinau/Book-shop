@@ -6,7 +6,9 @@ function getAll() {
   return api.get('/api/products');
 }
 // GET ALL ONSALE - ProductSale
-
+function getOnSale() {
+  return api.get('/api/products/onSale');
+}
 // POST - AddProduct
 function post(data) {
   const formData = prepareFormData(data);
@@ -45,7 +47,6 @@ function prepareFormData(data, uploadedfile) {
   formData.append('category', data.category);
   formData.append('price', data.price);
   formData.append('author', data.author);
-
   formData.append('onSale', data.onSale);
   formData.append('isAvailable', data.isAvailable);
   formData.append('image', data.image);
@@ -63,6 +64,7 @@ const productService = {
   getById,
   put,
   del,
+  getOnSale,
 };
 
 export default productService;

@@ -1,3 +1,4 @@
+import * as styles from './AddProduct.css';
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
@@ -12,10 +13,8 @@ import {
 import productService from '../../services/productService';
 import { getFileFromUrl } from '../../utils/writeUtils';
 import TuCard from '../../components/common/TuCard';
-import TuButton from '../../components/common/TuButton';
+// import TuButton from '../../components/common/TuButton';
 import TuLoader from '../../components/common/TuLoader';
-
-import * as styles from './AddProduct.css';
 
 function EditProduct() {
   // CUSTOM HOOKS
