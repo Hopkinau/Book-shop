@@ -75,3 +75,7 @@ export const link = style({
   fontWeight: vars.fontWeights.bolder,
   letterSpacing: '0.1em',
 });
+
+export const headers = style({
+  textDecoration: 'underline',
+});
