@@ -32,7 +32,7 @@ function App() {
         {/* PRODUCTS */}
         <Route path='store'>
           <Route path='products' element={<ProductsMenu />} />
-          <Route path='products' element={<ProductsMenu />} />
+
           <Route path='product'>
             {/* path: /store/product/:id */}
             <Route path=':id' element={<ProductDetail />} />

@@ -27,11 +27,6 @@ const Header = () => {
             Product
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item>
-          <Nav.Link className={styles.link} href='/store/products'>
-            Onsale
-          </Nav.Link>
-        </Nav.Item>
       </Nav>
 
       <Dropdown className={styles.dropdown}>
