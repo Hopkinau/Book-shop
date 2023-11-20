@@ -16,11 +16,7 @@ module.exports = {
       // Store the collection reference in variable
       const productRef = db.collection('products');
       // Fetch ALL Currencies and store response in "snapshot"
-      const snapshot = await productRef
-        .where('onSale', '==', 'true')
-        .orderBy('price', 'desc')
-        .limit(10)
-        .get();
+      const snapshot = await productRef.get();
 
       // [400 ERROR] Check for User Asking for Non-Existent Documents
       if (snapshot.empty) {
