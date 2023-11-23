@@ -1,15 +1,15 @@
-import * as styles from './NotFound.css'
-import { Link } from "react-router-dom"
+import * as styles from './NotFound.css';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => {
   return (
     <div className={styles.notFoundBox}>
       <div className={styles.twinBox}>
         <h1>404</h1>
-        <Link to="/">This page could not be found</Link>
+        <Link to='/'>This page could not be found,404</Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NotFound
+export default NotFound;
