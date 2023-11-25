@@ -11,7 +11,7 @@ const config = require('./config/config');
 const ApiError = require('./utilities/ApiError');
 const apiErrorHandler = require('./middleware/apiErrorHandler');
 const routes = require('./routes/routes');
-const { dbPing } = require('./config/db');
+const { db } = require('./config/db');
 const corsOptions = require('./config/corsOptions');
 const debugStartup = require('debug')('app:startup');
 
@@ -46,8 +46,24 @@ app.use((req, res, next) => {
 app.use(apiErrorHandler);
 
 // Ping DB & Set Port
-dbPing.then(() => {
+// Ping DB & Set Port
+if (config.env === 'development') {
+  // Test DB Connection
+  db.listCollections()
+    .then((collections) => {
+      debugStartup('Connected to Cloud Firestore');
+      for (let collection of collections) {
+        debugStartup(`Found db collection: ${collection.id}`);
+      }
+    })
+    .then(() => {
+      app.listen(config.port, () =>
+        console.log(`Server is running on port: ${config.port}`)
+      );
+    });
+  // PRODUCTION
+} else {
   app.listen(config.port, () =>
     console.log(`Server is running on port: ${config.port}`)
   );
-});
+}

@@ -30,28 +30,27 @@ try {
       auth_provider_x509_cert_url: config.db.auth_provider_x509_cert_url,
       client_x509_cert_url: config.db.client_x509_cert_url,
       universe_domain: config.db.universe_domain,
+    };
   }
 
-  // Initialize firebase services
-  admin.initializeApp({
-    // Set Application Default Credentials (ADC implicitly determines credentials from GOOGLE_APPLICATION_CREDENTIALS ENV)
+  debugError500(serviceAccountKey);
+
+  //OPTIONS VAR : Grant admin access to firebase +bucket services
+  const firebaseAppOptions = {
     credential: admin.credential.cert(config.db.google_account_credentials),
     storageBucket: config.db.storageBucket,
-  });
+  };
+
+  // Initialize firebase services
+  admin.initializeApp(firebaseAppOptions);
 
   const db = admin.firestore();
   const bucket = admin.storage().bucket();
 
   // DB Ping function just for testing
-  // const dbPing = db.listCollections().then((collections) => {
-  //   dbStartup('Connected to Cloud Firestore');
-  //   for (let collection of collections) {
-  //     dbStartup(`Found db collection: ${collection.id}`);
-  //   }
-  // });
 
   // Export variable objects for use in our application
-  module.exports = { db, bucket, dbPing };
+  module.exports = { db, bucket };
 
   // DEBUG: Unhandled error will be logged to console
 } catch (err) {
