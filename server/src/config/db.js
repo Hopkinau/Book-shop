@@ -33,7 +33,7 @@ try {
     };
   }
 
-  debugError500(serviceAccountKey);
+  dbStartup(serviceAccountKey);
 
   //OPTIONS VAR : Grant admin access to firebase +bucket services
   const firebaseAppOptions = {

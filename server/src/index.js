@@ -35,6 +35,9 @@ app.use(fileUpload({ createParentPath: true }));
 app.use(morgan('dev'));
 
 // Main routing middleware function
+app.get('/', (req, res) => {
+  res.send('Welcome to the API');
+});
 app.use('/api', routes());
 
 // Not Found Route
